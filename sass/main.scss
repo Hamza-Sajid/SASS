@@ -1,0 +1,92 @@
+//variables
+
+$color-primary: #ffff00; // Yellow
+
+body {
+  background-color: $color-primary;
+}
+
+//Mixin's
+
+@mixin transform($value){
+    -webkit-transform: $value;
+    -ms-transform:$value;
+    transform:$value;
+}
+
+//Nesting
+
+.navbar
+{
+    background-color: blueviolet;
+    padding:1em;
+    ul{
+        list-style: none;
+    }
+    li
+    {
+        text-align: center;
+        margin: 1em;
+        @include transform(rotate(250));
+    }
+}
+
+
+//  & or impersend 
+.btn
+{
+    padding: 2em;
+
+    &--red
+    {
+        background-color: red($color: #000000);
+    }
+    &:hover
+    {
+        background-color: #ffff00;
+    }
+}
+
+
+//IF - ELSE CONDITION WITH MIXIN'S
+@mixin font($value) {
+    @if $value == large
+    {
+        font-size: 4rem;
+    }
+    @else if $value == small
+    {
+        font-size: 2rem;
+    }
+    
+}
+
+
+.h2
+{
+    @include font(large);
+}
+
+.h4
+{
+@include font(large);
+}   
+
+
+// % PLACE-HOLDER (TO STORE MULTIPLE VALUES)
+
+%placeholder{
+    width: 100px;
+    height: 100px;
+    background-color: rebeccapurple;
+}
+
+
+.ptcl
+{
+@extend %placeholder;
+}
+.lgs
+{
+@extend %placeholder;
+}

@@ -1,0 +1,3 @@
+'*.ignore_me' 
+node_modules
+config.env
